@@ -34,13 +34,17 @@ describe("Thermostat", function() {
     expect(thermostat.power_saving).toBe(true);
   });
 
-  it("should return false if power saving switched off", function() {
+  it("should check what the power saving status is", function(){
+    expect(thermostat.checkPowerSaving()).toEqual("Power saving on")
+  });
+
+  it("should return false if power saving is switched off", function() {
     thermostat.powerSavingOff();
     expect(thermostat.power_saving).toBe(false);
   });
 
-  it("should return true if power saving switched on", function(){
-    thermostat.powerSavingOn();
+  it("should return true if power saving is switched on", function(){
+    expect(thermostat.powerSavingOn()).toEqual("Power saving switched on");
     expect(thermostat.power_saving).toBe(true);
   });
 
@@ -49,7 +53,7 @@ describe("Thermostat", function() {
   });
 
   it("should set the max temp to 32 degrees if power saving switched off", function() {
-    thermostat.powerSavingOff();
+    expect(thermostat.powerSavingOff()).toEqual("Power saving switched off");
     expect(thermostat.max_temp).toEqual(32);
   });
 

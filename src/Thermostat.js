@@ -32,14 +32,24 @@ Thermostat.prototype.decreaseTemp = function() {
   };
 };
 
+Thermostat.prototype.checkPowerSaving = function() {
+  if (this.power_saving = true) {
+      return "Power saving on";
+  } else if (this.power_saving = false) {
+      return "Power saving off";
+  };
+};
+
 Thermostat.prototype.powerSavingOff = function() {
   this.max_temp = 32;
   this.power_saving = false;
+  return "Power saving switched off";
 };
 
 Thermostat.prototype.powerSavingOn = function() {
   this.max_temp = this.MAX_TEMP;
   this.power_saving = this.POWER_SAVING;
+  return "Power saving switched on";
 };
 
 Thermostat.prototype.reSet = function() {
