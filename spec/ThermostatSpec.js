@@ -1,3 +1,5 @@
+'use strict';
+
 describe("Thermostat", function() {
   var thermostat;
 
@@ -37,13 +39,23 @@ describe("Thermostat", function() {
     expect(thermostat.power_saving).toBe(false);
   });
 
+  it("should return true if power saving switched on", function(){
+    thermostat.powerSavingOn();
+    expect(thermostat.power_saving).toBe(true);
+  });
+
   it("should have a default power saving max temperature of 25 degrees", function() {
     expect(thermostat.max_temp).toEqual(25);
   });
 
-  it("should set the max temp to 32 degrees if power saving off", function() {
+  it("should set the max temp to 32 degrees if power saving switched off", function() {
     thermostat.powerSavingOff();
-    expect(thermostat.max_temp).toEqual(25);
+    expect(thermostat.max_temp).toEqual(32);
+  });
+
+  it("should set the max temp to 25 degrees if power saving switched on", function() {
+    thermostat.powerSavingOff();
+    expect(thermostat.max_temp).toEqual(32);
   });
 
   it("should raise an error if going above max temp", function() {
