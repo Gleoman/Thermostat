@@ -17,7 +17,7 @@ describe("Thermostat", function() {
     expect(thermostat.decreaseTemp()).toEqual(19);
   });
 
-  it("should have a min temperature of 10", function() {
+  it("should have a min temperature of 10 degrees", function() {
     expect(thermostat.min_temp).toEqual(10);
   });
 
@@ -28,12 +28,49 @@ describe("Thermostat", function() {
     }).toThrowError("Minimum temperature reached");
   });
 
-  it("should have a default max temperature of 32", function() {
-    expect(thermostat.max_temp).toEqual(32);
+  it("should have power saving on by default", function() {
+    expect(thermostat.power_saving).toBe(true);
   });
 
-  it("should set the max temp to 25 if power saving on", function() {
-    thermostat.powerSaving();
+  it("should return false if power saving switched off", function() {
+    thermostat.powerSavingOff();
+    expect(thermostat.power_saving).toBe(false);
+  });
+
+  it("should have a default power saving max temperature of 25 degrees", function() {
     expect(thermostat.max_temp).toEqual(25);
+  });
+
+  it("should set the max temp to 32 degrees if power saving off", function() {
+    thermostat.powerSavingOff();
+    expect(thermostat.max_temp).toEqual(25);
+  });
+
+  it("should raise an error if going above max temp", function() {
+    thermostat.temp = thermostat.max_temp;
+    expect(function() {
+      thermostat.upTemp();
+    }).toThrowError("Maximum temperature reached");
+  });
+
+  it("should reset temperature to 20 degrees", function() {
+    thermostat.reSet();
+    expect(thermostat.currentTemp()).toEqual(20);
+  });
+
+  it("should output LOW_USAGE if under 18 degrees", function() {
+    thermostat.temp = 17;
+    expect(thermostat.energyUsage()).toEqual("LOW_USAGE");
+  });
+
+  it("should output MEDIUM_USAGE if between 18 and, up to and including, 24 degrees",
+  function() {
+    thermostat.temp = 24;
+    expect(thermostat.energyUsage()).toEqual("MEDIUM_USAGE");
+  });
+
+  it("should output HIGH_USAGE if 25 degrees or above", function(){
+    thermostat.temp = 25;
+    expect(thermostat.energyUsage()).toEqual("HIGH_USAGE");
   });
 });
