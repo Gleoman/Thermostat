@@ -9,10 +9,15 @@
     <link rel="stylesheet" type="text/css" href="../css/Thermostat.css">
   </head>
   <body>
-
     <section>
-      <h1> Indoor temperature <span id="temperature"></span>c</h1>
-      <h2> Outside temperature: <span id="outside-temperature"></span>c</h2>
+      <h1>Current temperature: <span id="current-temperature"></span>c</h1>
+        <select id="current-city">
+          <option value="london">London</option>
+          <option value="new york">New York</option>
+          <option value="paris">Paris</option>
+          <option value="tokyo">Tokyo</option>
+        </select>
+      <h2> Indoor temperature <span id="temperature"></span>c</h2>
       <p>
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
