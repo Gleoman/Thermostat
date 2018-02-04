@@ -1,3 +1,5 @@
+require '../src/Thermostat.js'
+
 'use strict';
 
 describe("Thermostat", function() {
