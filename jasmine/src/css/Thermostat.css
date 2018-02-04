@@ -1,0 +1,12 @@
+
+.LOW_USAGE {
+  color: green;
+}
+
+.MEDIUM_USAGE {
+  color: black;
+}
+
+.HIGH_USAGE {
+  color: red;
+}
