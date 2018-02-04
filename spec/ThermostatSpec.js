@@ -1,4 +1,4 @@
-require '../src/Thermostat.js'
+
 
 'use strict';
 
