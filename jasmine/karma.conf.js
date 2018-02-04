@@ -64,16 +64,16 @@ module.exports = function(config) {
                   '--no-sandbox',
                   '--remote-debugging-port=9222'
                 ],
-              }
-            }
+              },
+            },
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun:  true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
   })
 }
